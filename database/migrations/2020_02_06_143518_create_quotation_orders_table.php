@@ -25,6 +25,7 @@ class CreateQuotationOrdersTable extends Migration
             $table->enum('created', ['client', 'cfchm'])->default('client');
             $table->unsignedBigInteger('created_by')->nullable(); //only cfchm
             $table->foreign('created_by')->references('id')->on('users');
+            $table->string('file_pdf_generated')->nullable();
 
             $table->text('data_contact')->nullable(); // json {}
             // $table->string('firstname', 100)->nullable();

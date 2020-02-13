@@ -24,6 +24,7 @@ class CreateUserHasProjectTable extends Migration
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
 
             $table->dateTime('date_assign')->nullable();
+            $table->text('comments_assign')->nullable();
             $table->enum('status', ['assigned', 'attended', 'finished'])->default('assigned');
             $table->dateTime('date_finish')->nullable();
 
