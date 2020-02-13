@@ -18,7 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('unity');
-            $table->enum('type', ['days', 'event'])->default('days');
+            $table->enum('rent_type', ['by_day', 'by_event'])->default('by_day');
             $table->float('min_price');
             $table->float('max_price');
             $table->text('photos')->nullable(); //[]

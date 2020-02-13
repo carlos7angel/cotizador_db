@@ -17,16 +17,16 @@ class CreateQuotationOrdersTable extends Migration
 
             $table->bigIncrements('id');
             $table->string('code')->nullable();
-            $table->dateTime('date')->nullable(); //todo
+            $table->dateTime('date')->nullable();
             $table->float('total_price_items')->default(0);
             $table->float('total_price_services')->default(0);
-            $table->enum('status', ['consult','submited','attended'])->default('consult'); // delete with cron
+            $table->enum('status', ['consult','submited','attended','finished'])->default('consult'); // delete with cron
             $table->enum('type', ['pre-order', 'order'])->default('pre-order');
-            //$table->enum('created', ['client', 'cfchm'])->default('client'); // not shure
+            $table->enum('created', ['client', 'cfchm'])->default('client');
             $table->unsignedBigInteger('created_by')->nullable(); //only cfchm
             $table->foreign('created_by')->references('id')->on('users');
 
-            $table->text('data_contact')->nullable(); // {}
+            $table->text('data_contact')->nullable(); // json {}
             // $table->string('firstname', 100)->nullable();
             // $table->string('lastname', 100)->nullable();
             // $table->string('email', 150)->nullable();

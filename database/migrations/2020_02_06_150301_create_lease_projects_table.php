@@ -17,20 +17,25 @@ class CreateLeaseProjectsTable extends Migration
 
             $table->bigIncrements('id');
             $table->string('code')->unique(); // inform or hash
-            $table->enum('created_type', ['client', 'cfchm'])->default('client');
-            $table->enum('status', ['pre-reserved', 'reserved', 'confirmed', 'finished', 'cancelled'])->default('reserved'); // add more status
-            $table->enum('phase', ['01', '02', '03'])->nullable(); // todo: confirm!
-            $table->text('phases_data')->nullable(); // json register dates eg [{"phase": "01", "name_phase": "create...", "close_date": ...dateTime()}]
+            $table->enum('type_from', ['pre-order', 'email', 'note'])->default('pre-order');
+            $table->enum('status', ['solicitude', 'inprocess', 'reserved', 'confirmed', 'unconfirmed', 'devolution', 'done', 'finished', 'annulled'])->default('solicitude'); // for check dates only reserved & confirmed
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('quotation_orders')->onDelete('cascade');
-            $table->text('reasons_not_selled')->nullable();
-            $table->string('pdf_places')->nullable(); // hash or path_file (its depends only download)
-            $table->string('pdf_services')->nullable();
-            $table->string('file_guarantee')->nullable();
-            $table->string('file_report_confirmed')->nullable();
-            $table->string('file_contract')->nullable();
-            $table->string('file_note_cash')->nullable(); // todo: update names
-            $table->string('file_final_report')->nullable();
+
+            $table->text('reasons_finished')->nullable();
+            $table->text('reasons_cancelled')->nullable();
+
+            $table->string('file_pdf_places')->nullable();
+            $table->string('file_pdf_services')->nullable();
+
+            $table->string('document_delivery_certificate')->nullable();
+            $table->string('document_service_order')->nullable();
+            $table->string('document_return_certificate')->nullable();
+            $table->string('document_confirmation_letter')->nullable();
+            $table->string('document_payment_commitment')->nullable();
+            $table->string('document_event_start_report')->nullable();
+            $table->string('document_closing_report')->nullable();
+
             $table->unsignedBigInteger('event_id')->nullable(); // null only is prereserved
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->unsignedBigInteger('organizer_id')->nullable(); // null only is prereserved

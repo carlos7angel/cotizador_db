@@ -20,7 +20,7 @@ class CreateEventsTable extends Migration
             $table->string('category')->nullable();
             $table->dateTime('start_date');
             $table->dateTime('finish_date');
-            $table->enum('type', ['free','cfchm'])->default('free'); // is correct?
+            $table->enum('type_organizer', ['third-party', 'cfchm', 'co-organized'])->default('third-party');
             $table->unsignedBigInteger('organizer_id');
             $table->foreign('organizer_id')->references('id')->on('organizers')->onDelete('cascade');
             $table->enum('status', ['draft', 'published', 'unpublished'])->default('published');
@@ -37,6 +37,10 @@ class CreateEventsTable extends Migration
             $table->foreign('place_id')->references('id')->on('places')->onDelete('cascade');
             $table->dateTime('start_date');
             $table->dateTime('finish_date');
+            $table->dateTime('mount_start_date')->nullable();
+            $table->dateTime('mount_finish_date')->nullable();
+            $table->dateTime('dismount_start_date')->nullable();
+            $table->dateTime('dismount_finish_date')->nullable();
             $table->primary(['event_id', 'place_id']);
         });
     }

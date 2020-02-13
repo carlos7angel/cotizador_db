@@ -19,9 +19,12 @@ class CreateOrderPlaceTable extends Migration
             $table->foreign('order_id')->references('id')->on('quotation_orders')->onDelete('cascade');
             $table->unsignedBigInteger('place_id');
             $table->foreign('place_id')->references('id')->on('places')->onDelete('cascade');
-
             $table->dateTime('date_start')->nullable();
             $table->dateTime('date_finish')->nullable();
+            $table->dateTime('mount_start_date')->nullable();
+            $table->dateTime('mount_finish_date')->nullable();
+            $table->dateTime('dismount_start_date')->nullable();
+            $table->dateTime('dismount_finish_date')->nullable();
             $table->integer('quantity')->nullable();
             $table->float('price');
             $table->text('detail')->nullable();
