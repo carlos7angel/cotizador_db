@@ -36,12 +36,12 @@ class CreatePlacesTable extends Migration
             $table->string('floor')->nullable();
             $table->enum('type', ['block','room'])->default('block');
             $table->boolean('has_services')->default(1);
-            $table->string('pdf_map')->nullable();
-            $table->enum('plc_sector_inweb', ['Bloque Rojo', 'Bloque Amarillo', 'Bloque Verde', 'Auditorio', 'Plazas', 'Salones'])->default('Bloque Rojo'); // confirmar
+            $table->string('file_pdf_map')->nullable();
+            $table->enum('sector_inweb', ['Bloque Rojo', 'Bloque Amarillo', 'Bloque Verde', 'Auditorio', 'Plazas', 'Salones'])->default('Bloque Rojo'); // only cotizador
             $table->text('photos')->nullable(); // []
             $table->text('photos360')->nullable(); // []
-            $table->text('price_normal');
-            $table->text('price_promotion');
+            $table->text('price_normal'); // json {}
+            $table->text('price_promotion'); // json {}
             $table->boolean('active')->default(1);
             $table->timestamps();
             $table->softDeletes();

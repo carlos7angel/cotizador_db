@@ -19,7 +19,7 @@ class CreateFilesTable extends Migration
             $table->string('unique_code');
             $table->string('file_hash')->nullable();
             $table->string('name');
-            $table->string('old_name');
+            $table->string('old_name')->nullable();
             $table->text('description')->nullable();
             $table->string('mime_type');
             $table->integer('size');

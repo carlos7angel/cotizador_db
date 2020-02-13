@@ -18,7 +18,7 @@ class CreateProjectDocumentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('unique_code')->unique();
             //$table->enum('type_document', ['acta', 'orden', 'carta', 'compromiso', 'informe'])->nullable();
-            $table->string('name');
+            $table->string('name'); // compromiso de pago
             $table->dateTime('date_document');
             $table->string('file_document');
             $table->string('code_document')->nullable();

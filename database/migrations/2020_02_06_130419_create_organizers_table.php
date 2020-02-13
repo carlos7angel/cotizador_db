@@ -14,6 +14,7 @@ class CreateOrganizersTable extends Migration
     public function up()
     {
         Schema::create('organizers', function (Blueprint $table) {
+
             $table->bigIncrements('id');
             $table->string('business_name');
             $table->text('description')->nullable();

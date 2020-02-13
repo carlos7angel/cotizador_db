@@ -20,7 +20,7 @@ class CreateUserHasProjectTable extends Migration
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('lease_projects')->onDelete('cascade');
 
-            $table->unsignedBigInteger('role_id'); // only sales executive or lawer or finance
+            $table->unsignedBigInteger('role_id'); // only "sales executive" or "lawer" or "finance"
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
 
             $table->dateTime('date_assign')->nullable();

@@ -25,7 +25,7 @@ class CreateOrderPlaceTable extends Migration
             $table->dateTime('mount_finish_date')->nullable();
             $table->dateTime('dismount_start_date')->nullable();
             $table->dateTime('dismount_finish_date')->nullable();
-            $table->integer('quantity')->nullable();
+            $table->integer('quantity')->nullable(); // only 1
             $table->float('price');
             $table->text('detail')->nullable();
 
