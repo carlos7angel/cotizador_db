@@ -34,7 +34,7 @@ class CreateLeaseProjectsTable extends Migration
             $table->text('reasons_finished')->nullable();
             $table->text('reasons_annulled')->nullable();
 
-            $table->string('file_pdf_places')->nullable();
+            $table->string('file_pdf_places')->nullable(); // id or hash
             $table->string('file_pdf_services')->nullable();
 
             $table->string('document_delivery_certificate')->nullable(); // acta de entrega

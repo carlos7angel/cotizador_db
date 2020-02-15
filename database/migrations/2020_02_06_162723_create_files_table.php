@@ -23,8 +23,8 @@ class CreateFilesTable extends Migration
             $table->text('description')->nullable();
             $table->string('mime_type');
             $table->integer('size');
-            $table->text('url_file');
-            $table->text('path_file');
+            $table->text('url_file'); // https://domin/.pdf
+            $table->text('path_file'); // /uplads/generated/*.pdf
             $table->text('options')->nullable();
             $table->enum('type', ['uploaded', 'generated'])->default('uploaded');
             $table->boolean('active')->default(1);
